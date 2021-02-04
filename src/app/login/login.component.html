@@ -1,0 +1,33 @@
+
+<div class="container shadow-lg">
+  <form #formGroup="ngForm" >
+  <div class="row">
+      <div class="col-lg-6 col-md-6 left">
+      <div class="row">
+        <img src="../assets/images/mini.jpg" alt="plus de détail" class="rounded float-start img-fluid" srcset="">
+      </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 pt-4">
+
+        <div class="row mt-4">
+          <div class="col-2"></div>
+          <input type="email" class="form-control col-lg-8 input-lg" name="email" ngModel id="" placeholder="name@example.com" email required >
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-2"></div>
+          <input type="email" class="form-control col-lg-8 input-lg" name="password" ngModel id="" placeholder="............." required>
+          <div class="col-lg-2"></div>
+        </div>
+        
+        <div class="row mt-5">
+          <div class="col-lg-3"></div>
+          <button type="button" class="btn col-lg-6" style="background-color: #287895" (click)="onLogin(formGroup)" >CONNEXION</button>
+          <div class="col-lg-3"></div>
+        </div>
+    </div>
+  </div>
+</form>
+</div>

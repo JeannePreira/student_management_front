@@ -1,0 +1,69 @@
+
+<div class="container pt-3 ml-5" >
+    <form [formGroup]="addForm" class="row"  style=" border-radius:4px; box-shadow: 1px 1px 10px black;">
+      <h1 class="mt-5 ml-5 mb-5 col-lg-12">Ajout</h1> 
+      <div class="form-group  ml-5">
+        <div class="row">
+          <div class="col-auto">
+            <label for="inputCompetence" class="col-form-label">Competence</label>
+          </div>
+          <div class="col-auto">
+            <select class="form-control inputstl" id="inputCompetence" multiple  [formControlName]="'groupeCompetence'"
+                    (ngModelChange)="optionChoised($event)" >
+                <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" value="/api/admin/groupeCompetences/{{groupeCompetence.id}}">
+                  {{groupeCompetence.libelle}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-auto">
+            <label for="inputLibelle" class="col-form-label">Libelle</label>
+          </div>
+          <div class="col-auto">
+            <input type="text" class="form-control " id="Libelle" aria-describedby="" placeholder="Libelle" [formControlName]="'libelle'">
+          </div>
+        </div>
+
+        <div class="accordion mt-4" id="exempleAccordeon">
+            <div class="card">
+              <div class="card-header" id="header4">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">Niveau n°1</button>
+              </div>
+              <div id="collapse4" class="collapse show" aria-labelledby="header4" data-parent="#exempleAccordeon">
+                <div class="card-body">
+                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [formControlName]="'niveaux'">
+                </div>
+              </div>
+            </div>
+              
+            <div class="card">
+              <div class="card-header" id="header5">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">Niveau n°2</button>
+              </div>
+              <div id="collapse5" class="collapse" aria-labelledby="header5" data-parent="#exempleAccordeon">
+                <div class="card-body">
+                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [formControlName]="'niveaux'">
+              </div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header" id="header6">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">Niveau n°3</button>
+              </div>
+              <div id="collapse6" class="collapse" aria-labelledby="header6" data-parent="#exempleAccordeon">
+                <div class="card-body">
+                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [formControlName]="'niveaux'">
+                </div>
+              </div>
+            </div> 
+          </div>
+        
+      </div>
+
+      <div class="form-group col-lg-8 ">
+          <button type="button" class="btn float-right mt-5 col-lg-4" (click)="ajouterCompetence()" style="background-color:#287895; color:white">Soumetre</button>
+      </div>
+    </div>
+    </form>
+    </div>

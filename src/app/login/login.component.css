@@ -1,0 +1,14 @@
+
+.container{
+  border: 5px solid white;
+  border-radius: 20px;
+  background-color: rgba(229, 234, 235, 0.904);
+  margin-top: 200px;
+}
+
+input, button{
+  height: 50px;
+}
+/* img{
+    background-image: url(../assets/images/mini.jpg);
+} */

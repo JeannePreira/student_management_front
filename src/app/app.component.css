@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Play:wght@400;700&display=swap');
+
+*{
+    font-family: 'Play';
+}
+.contain{
+    /* border: 15px solid black; */
+   /* border-radius: 15px; */
+   height: 730px;
+   widows: 3500px;
+}
+.dash{
+    border: 15px solid white; 
+    background-color: rgb(233, 224, 224);
+}
+.header{
+    background-color:red;
+    height: 50px;
+}
+.mini-contain{
+    height: 680px; 
+    border: 20px solid rgb(233, 224, 224); 
+}
