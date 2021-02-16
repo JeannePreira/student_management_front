@@ -5,11 +5,11 @@
 
         <h1 class="mt-5 ml-5 mb-5 col-lg-12" style="font-family: Great Vibes;">Modification</h1> 
         <div class="form-group col-lg-7  mb-4 pt-1">
-            <input type="text" class="form-control " id="" aria-describedby="" placeholder="Libelle" ngModel name="libelle" >
+            <input type="text" class="form-control " id="" aria-describedby="" placeholder="Libelle" [(ngModel)]="profilSortie.libelle" name="libelle" >
         </div>
 
         <div class="form-group col-lg-10 ">
-            <button type="submit" (click)="modifierPs(editForm)" class="btn float-right mt-5 col-lg-3" style="background-color:#287895; color:white">EDIT</button>
+            <button type="submit" (click)="modifierProfilsortie()" [disabled]="!editForm.valid" class="btn float-right mt-5 col-lg-3" style="background-color:#287895; color:white">EDITER</button>
         </div> 
     </form>
     </div>

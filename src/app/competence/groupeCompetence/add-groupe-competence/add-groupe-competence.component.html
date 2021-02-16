@@ -2,16 +2,17 @@
 <div class="container pt-3" >
     
     <form [formGroup]="addgroupForm" class="row"  style=" border-radius:4px; box-shadow: 1px 1px 10px black;">
-        <h1 class="mt-5 ml-5 mb-5 col-lg-12">Ajout</h1> 
+        <h1 class="mt-5 ml-5 mb-5 col-lg-12" style="font-family: Great Vibes">Ajout</h1> 
     <div class="form-group col-lg-5 ml-5">
         <input type="text" class="form-control" [formControlName]="'libelle'" id="" aria-describedby="" placeholder="Entrez votre libelle">
-        <!-- <small id="" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <span class="text-danger row ml-5" *ngIf="libelle.invalid && libelle.touched">Libelle is required</span>
     </div>
     
     <div class="form-group col-lg-5 ml-5 mb-5">
         <input type="text" class="form-control " id="" aria-describedby="" [formControlName]="'description'" placeholder="Entrez votre description">
-        <!-- <small id="" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <span class="text-danger row ml-5" *ngIf="description.invalid && description.touched">Libelle is required</span>
     </div>
+    
     
     <div class="form-group col-lg-5 ml-5">
         <label for="expertise" class="control-label">Competences</label>
@@ -20,10 +21,11 @@
                 <option class="font-italic font-weight-bold" *ngFor="let competence of competences" value="/api/admin/competences/{{competence.id}}">
                   {{competence.libelle}}</option>
             </select>
+            <span class="text-danger row ml-5" *ngIf="competence.invalid && competence.touched">Libelle is required</span>
     </div>
 
     <div class="form-group col-lg-8 ">
-        <button type="button" (click)="ajouterGroupeCompetence()" class="btn float-right mt-5 col-lg-4" style="background-color:#287895; color:white">Soumetre</button>
+        <button type="button" (click)="ajouterGroupeCompetence()" [disabled]="addgroupForm.invalid" class="btn float-right mt-5 col-lg-4" style="background-color:#287895; color:white">Soumetre</button>
     </div>
     </form>
     </div>

@@ -8,14 +8,25 @@ import { GroupeCompetenceService } from '../groupe-competence.service';
   styleUrls: ['./liste-groupe-competence.component.css']
 })
 export class ListeGroupeCompetenceComponent implements OnInit {
+  [x: string]: any;
 
   groupeCompetences: any;
 
   totalRecords: number | any;;
   page: number=1;
+  libelle ='';
   constructor(private _groupeCompetenceService:GroupeCompetenceService) { }
 
   ngOnInit(): void {
+    this._groupeCompetenceService.getRefresh().subscribe(() =>{
+      this.getGroupeCompetence();
+    });
+    this.getGroupeCompetence();
+
+   
+
+  }
+  getGroupeCompetence(){
     this._groupeCompetenceService.getGroupeCompetence().subscribe(
       (data: any) =>
       {
@@ -24,8 +35,18 @@ export class ListeGroupeCompetenceComponent implements OnInit {
         console.log(data)
       }
     )
-
   }
   
+  search(){
+    if (this.libelle == "") {
+      this.ngOnInit();
+    }else{
+      this.groupeCompetences = this.groupeCompetences.filter((res: { libelle: string; })=>{
+        return res.libelle.toLocaleLowerCase().match(
+          this.libelle.toLocaleLowerCase()
+        );
+      })
+    }
+  }
 
 }

@@ -17,6 +17,11 @@ import {ListeCompetenceComponent } from './competence/liste-competence/liste-com
 import { ListeGroupeCompetenceComponent } from './competence/groupeCompetence/liste-groupe-competence/liste-groupe-competence.component';
 import { ListeReferentielComponent } from './referentiel/liste-referentiel/liste-referentiel.component';
 import { AddReferentielComponent } from './referentiel/add-referentiel/add-referentiel.component';
+import { UpdateGrpCompetenceComponent } from './competence/groupeCompetence/update-grp-competence/update-grp-competence.component';
+import { UpdateCompetenceComponent } from './competence/update-competence/update-competence.component';
+import { AuthGuard } from './guards/auth.guard';
+import { DetailsComponent } from './users/details/details.component';
+import { UpdateReferentielComponent } from './referentiel/update-referentiel/update-referentiel.component';
 
 
 
@@ -24,11 +29,14 @@ import { AddReferentielComponent } from './referentiel/add-referentiel/add-refer
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'users', component: ListeUsersComponent},
-  {path: 'admin', component: HeaderComponent, children:[
+  {path: 'users', component: ListeUsersComponent, canActivate: [
+    AuthGuard]},
+  {path: 'admin', component: HeaderComponent,canActivate: [
+    AuthGuard], children:[
     {path: 'users', component:ListeUsersComponent, children:[
       {path: 'updateUser/:id', component: UpdateUserComponent},
       {path: 'addUser', component: AddUserComponent},
+      {path: 'detailUser/:id', component: DetailsComponent},
     ]},
     {path: 'profils', component: ListeProfilsComponent, children:[
       {path: 'addProfil', component:AddProfilComponent},
@@ -40,12 +48,15 @@ const routes: Routes = [
     ]},
     {path: 'groupeCompetence', component: ListeGroupeCompetenceComponent, children:[
       {path: 'addgroupeCompetence', component: AddGroupeCompetenceComponent},
+      {path: 'updategroupeCompetence/:id', component: UpdateGrpCompetenceComponent},
     ]},
     {path: 'CompetenceListe', component: ListeCompetenceComponent, children:[
       {path: 'addCompetence', component: AddCompetenceComponent},
+      {path: 'updateCompetence/:id', component: UpdateCompetenceComponent},
     ]},
     {path: 'Referentiel', component: ListeReferentielComponent, children:[
       {path: 'addReferentiel', component: AddReferentielComponent},
+      {path: 'updateReferentiel/:id', component: UpdateReferentielComponent}
     ]}
   ] }
     

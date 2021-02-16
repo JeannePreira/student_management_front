@@ -5,49 +5,43 @@
         <h1 class="mt-5 ml-5 mb-5 col-lg-12">Ajout referentiel</h1> 
         <div class="form-group col-lg-5  mb-4 pt-1">
             <input type="text" class="form-control " id="" aria-describedby="" placeholder="Entrez votre Libelle" [formControlName]="'libelle'">
-            <!-- <small id="" class="form-text text-muted">We'll never share your text with anyone else.</small> -->
+            <span class="text-danger row ml-5" *ngIf="libelle.invalid && libelle.touched">Libelle is required</span>
         </div>
         <div class="form-group col-lg-5 ml-3 mb-4">
             <input type="text" class="form-control " id="" aria-describedby="" placeholder="Entrez votre presentation" [formControlName]="'presentation'">
-            <!-- <small id="" class="form-text text-muted">We'll never share your text with anyone else.</small> -->
+            <span class="text-danger row ml-5" *ngIf="presentation.invalid && presentation.touched">presentation is required</span>
         </div>
     
         
         <div class="form-group col-lg-5 mb-4 ">
-            <select class="form-control" id="" [formControlName]="'Competences'">
-                <option>choisissez vos Compétences</option>
-                <option>Développer le back-end d'une application web</option>
-                <option>Développer le front-end d'une application web</option>
+            <select class="form-control inputstl" id="inputCompetence" multiple  [formControlName]="'groupeCompetence'"
+                    (ngModelChange)="optionChoised($event)" >
+                <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" 
+                            value="{{groupeCompetence.libelle}}">
+                  {{groupeCompetence.libelle}}</option>
             </select>
-            <!-- <small id="" class="form-text text-muted">We'll never share your text with anyone else.</small> -->
+            <span class="text-danger row ml-5" *ngIf="groupeCompetence.invalid && groupeCompetence.touched">groupecompetence is required</span>
         </div>
     
         <div class="form-group col-lg-5 ml-3 mb-4">
-            <input type="text" class="form-control " id="" aria-describedby="" placeholder="Entrez votre programme" [formControlName]="'programme'">
-            <!-- <small id="" class="form-text text-muted">We'll never share your text with anyone else.</small> -->
+            <input type="file" accept="application/pdf" (change)="onFileSelected($event)"  
+                    class="form-control-file">
+            <span class="text-danger row ml-5 ml-5" *ngIf="programme.invalid && programme.touched">programme is required</span>
         </div>
     
         <div class="form-group col-lg-5 mb-4" >
-            <select class="form-control" id="" [formControlName]="'critereEvaluation'">
-                <option>choisissez votre Critère d'évaluation</option>
-                <option>Un portfolio comprenant la réalisation d'au moins 9 projets tout au long de la formation</option>
-                <option>Une soutenance devant un jury de professionnels</option>
-            </select>
-            <!-- <small id="" class="form-text text-muted">We'll never share your text with anyone else.</small> -->
+            <input type="text" class="form-control " id="" aria-describedby="" placeholder="Entrez votre critereEvaluation" [formControlName]="'critereEvaluation'">
+            <span class="text-danger row ml-5" *ngIf="critereEvaluation.invalid && critereEvaluation.touched">critereEvaluation is required</span>
         </div>
     
         <div class="form-group col-lg-5 ml-3 mb-4">
-            <select class="form-control" id="" [formControlName]="'critereAdmission'">
-                <option>choisissez votre Critères d'admission</option>
-                <option>Une soutenance devant un jury de professionnels</option>
-                <option>Un portfolio comprenant la réalisation d'au moins 9 projets tout au long de la formation</option>
-            </select>
-            <!-- <small id="" class="form-text text-muted">We'll never share your text with anyone else.</small> -->
+            <input type="text" class="form-control " id="" aria-describedby="" placeholder="Entrez votre critereAdmission" [formControlName]="'critereAdmission'">
+            <span class="text-danger row ml-5" *ngIf="critereAdmission.invalid && critereAdmission.touched">critereAdmission is required</span>
         </div>
     
         <div class="form-group col-lg-10 ">
-            <button type="button" class="btn float-right mt-5 col-lg-3" (click)="ajouterReferentiel()" style="background-color:#287895; color:white">S'inscrire</button>
+            <button type="button" class="btn float-right mt-5 col-lg-3" (click)="ajouterReferentiel()" style="background-color:#287895; color:white">AJOUTER</button>
         </div>
     
     </form>
-    </div>
+    </div>  

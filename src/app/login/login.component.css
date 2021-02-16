@@ -12,3 +12,10 @@ input, button{
 /* img{
     background-image: url(../assets/images/mini.jpg);
 } */
+
+input.ng-invalid.ng-touched{
+  border-left: 4px solid red;
+}
+.ng-valid{
+  border-left: 5px solid green;
+  }

@@ -30,6 +30,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataInterceptor } from './interceptor/data.interceptor';
 import { OnComponent } from './competence/groupeCompetence/on/on.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ItemReferentielComponent } from './referentiel/item-referentiel/item-referentiel.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { UpdateGrpCompetenceComponent } from './competence/groupeCompetence/update-grp-competence/update-grp-competence.component';
+import { UpdateCompetenceComponent } from './competence/update-competence/update-competence.component';
+import { DetailsComponent } from './users/details/details.component';
+import { UpdateReferentielComponent } from './referentiel/update-referentiel/update-referentiel.component';
+
+
 
 
 
@@ -59,7 +67,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddPromoComponent,
     ListePromoComponent,
     OnComponent,
- 
+    ItemReferentielComponent,
+    UpdateGrpCompetenceComponent,
+    UpdateCompetenceComponent,
+    DetailsComponent,
+    UpdateReferentielComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +79,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     {

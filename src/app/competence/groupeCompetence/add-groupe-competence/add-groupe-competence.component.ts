@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CompetenceService } from '../../service/competence.service';
 import { GroupeCompetenceService } from '../groupe-competence.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-groupe-competence',
@@ -21,9 +22,9 @@ export class AddGroupeCompetenceComponent implements OnInit {
     });
 
     this.addgroupForm = new FormGroup({
-      'libelle': new FormControl(null),
-      'description': new FormControl(null),
-      'competence': new FormControl(null)
+      'libelle': new FormControl('', Validators.required),
+      'description': new FormControl('', Validators.required),
+      'competence': new FormControl('', Validators.required)
     })
 
 
@@ -36,8 +37,34 @@ export class AddGroupeCompetenceComponent implements OnInit {
     this.groupeCompetenceService.addGroupeCompetence(this.addgroupForm.value).subscribe(data =>
       {
         console.log(data)
-      }  
-    )
-    // console.log(this.addgroupForm.value.description)
+        Swal.fire({
+          icon: 'success',
+          title: 'Ajouté!!',
+          position: 'top-end'
+        })
+        this.addgroupForm.reset();
+       }
+       ,(error) => {
+         console.log(error)
+         Swal.fire({
+          icon: 'error',
+          title: 'non Ajouté!',
+          text: 'infos invalid ou existes déja',
+          position: 'top-end'
+        })
+       });
+
+  }
+
+  get libelle(){
+    return this.addgroupForm.get('libelle')
+  }
+
+  get description(){
+    return this.addgroupForm.get('description')
+  }
+
+  get competence(){
+    return this.addgroupForm.get('competence')
   }
 }

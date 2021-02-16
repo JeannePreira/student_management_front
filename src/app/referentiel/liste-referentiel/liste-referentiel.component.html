@@ -8,7 +8,7 @@
     <div class="col-7 mt-2">
       <div class="row">
         <app-item-referentiel [dataFils]=referentiel *ngFor="let referentiel of referentiels | paginate:{id: 'listing_pagination',
-                                                                                                itemsPerPage: 6,
+                                                                                                itemsPerPage: 3,
                                                                                                 currentPage: page,
                                                                                                 totalItems: totalRecords
                                                                                                 }" class="col-4"></app-item-referentiel>

@@ -1,29 +1,43 @@
 
-<div class="container pt-3 ml-5" >
-    <form [formGroup]="addForm" class="row"  style=" border-radius:4px; box-shadow: 1px 1px 10px black;">
-      <h1 class="mt-5 ml-5 mb-5 col-lg-12">Ajout</h1> 
-      <div class="form-group  ml-5">
-        <div class="row">
-          <div class="col-auto">
-            <label for="inputCompetence" class="col-form-label">Competence</label>
+<div class="container pt-3" >
+    <form [formGroup]="addForm"  style=" border-radius:4px; box-shadow: 1px 1px 10px black;">
+      <form #profilForm="ngForm" class="row"  style=" border-radius:4px; box-shadow: 1px 1px 10px black;"></form>
+      <h1 class="mt-5 ml-5 mb-5 col-lg-12 pt-5" style="font-family: Great Vibes">Ajout</h1> 
+      <div class="col-11  p-3 ml-5">
+        <div class="form-group row">
+          <div class="col-4">
+            <label for="inputCompetence" class="col-form-label">groupe Competence</label>
           </div>
-          <div class="col-auto">
-            <select class="form-control inputstl" id="inputCompetence" multiple  [formControlName]="'groupeCompetence'"
+          <div class="col-8">
+            <select class="form-control inputstl" id="inputCompetence" multiple = true  [formControlName]="'groupeCompetence'"
                     (ngModelChange)="optionChoised($event)" >
                 <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" value="/api/admin/groupeCompetences/{{groupeCompetence.id}}">
                   {{groupeCompetence.libelle}}</option>
             </select>
           </div>
+       
         </div>
-
-        <div class="row mt-4">
-          <div class="col-auto">
+        <span class="text-danger row" *ngIf="groupeCompetence.invalid && groupeCompetence.touched">ggroupeCompetence is required</span>
+        <div class="row mt-4 form-group">
+          <div class="col-4">
             <label for="inputLibelle" class="col-form-label">Libelle</label>
           </div>
-          <div class="col-auto">
-            <input type="text" class="form-control " id="Libelle" aria-describedby="" placeholder="Libelle" [formControlName]="'libelle'">
+          <div class="col-8">
+            <input type="text" class="form-control " id="Libelle" aria-describedby="" placeholder="Libelle" formControlName="libelle">
+          </div>
+          
+        </div>
+         <span class="text-danger row" *ngIf="libelle.invalid && libelle.touched">Libelle is required</span>
+
+        <div class="row mt-4 form-group">
+          <div class="col-4">
+            <label for="inputDescription" class="col-form-label">Description</label>
+          </div>
+          <div class="col-8">
+            <input type="text" class="form-control " id="Description" aria-describedby="" placeholder="Description" formControlName="description">
           </div>
         </div>
+        <span class="text-danger row" *ngIf="description.invalid && description.touched">Description is required</span>
 
         <div class="accordion mt-4" id="exempleAccordeon">
             <div class="card">
@@ -32,7 +46,14 @@
               </div>
               <div id="collapse4" class="collapse show" aria-labelledby="header4" data-parent="#exempleAccordeon">
                 <div class="card-body">
-                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [formControlName]="'niveaux'">
+                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" formControlName="libellen1">
+                </div>
+                <span class="text-danger row ml-5" *ngIf="libellen1.invalid && libellen1.touched">libelle is required</span>
+                <div class="card-body">
+                  <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" formControlName="groupeAction1">
+                </div>
+                <div class="card-body">
+                  <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" formControlName="critereEvaluation1">
                 </div>
               </div>
             </div>
@@ -43,7 +64,15 @@
               </div>
               <div id="collapse5" class="collapse" aria-labelledby="header5" data-parent="#exempleAccordeon">
                 <div class="card-body">
-                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [formControlName]="'niveaux'">
+                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" formControlName="libellen2">
+                </div>
+                <span class="text-danger row  ml-5" *ngIf="libellen2.invalid && libellen2.touched">libelle is required</span>
+                <div class="card-body">
+                  <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" formControlName="groupeAction2">
+                </div>
+                <div class="card-body">
+                  <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" formControlName="critereEvaluation2">
+                </div>
               </div>
             </div>
     
@@ -53,17 +82,21 @@
               </div>
               <div id="collapse6" class="collapse" aria-labelledby="header6" data-parent="#exempleAccordeon">
                 <div class="card-body">
-                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [formControlName]="'niveaux'">
+                  <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" formControlName="libellen3">
+                </div>
+                <span class="text-danger row" *ngIf="libellen3.invalid && libellen3.touched">libelle is required</span>
+                <div class="card-body">
+                  <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" formControlName="groupeAction3">
+                </div>
+                <div class="card-body">
+                  <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" formControlName="critereEvaluation3">
                 </div>
               </div>
             </div> 
-          </div>
-        
       </div>
-
       <div class="form-group col-lg-8 ">
-          <button type="button" class="btn float-right mt-5 col-lg-4" (click)="ajouterCompetence()" style="background-color:#287895; color:white">Soumetre</button>
+        <button type="button" class="btn float-right mt-5 col-lg-4" (click)="ajouterCompetence()" [disabled]="addForm.invalid" style="background-color:#287895; color:white">Soumetre</button>
       </div>
-    </div>
+      </div>
     </form>
     </div>

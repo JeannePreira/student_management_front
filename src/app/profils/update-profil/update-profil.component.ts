@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ProfilsService } from '../profils.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-profil',
@@ -12,8 +13,9 @@ import { ProfilsService } from '../profils.service';
 export class UpdateProfilComponent implements OnInit {
 
   idEdit=0;
-  user: any;
+  profil: any;
   refreshProfils = new BehaviorSubject<boolean>(true);
+  @ViewChild('profilForm') form: NgForm | any;
   constructor(private profilService: ProfilsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -23,16 +25,32 @@ export class UpdateProfilComponent implements OnInit {
         this.idEdit = +id;
         this.profilService.getProfilById(+id).subscribe(
           (data)=>{
-            this.user = data;
+            this.profil = data;
             // console.log(data.id);
           })
       });
   }
 
-  editerProfil(profilForm:NgForm){
-    this.profilService.updateProfil(profilForm.value,this.idEdit).subscribe(data=>{
+  editerProfil(){
+    this.profilService.updateProfil(this.form.value,this.idEdit).subscribe(data=>{
       console.log(data)
-    })
-    // this.refreshProfils.next(true);
+      Swal.fire({
+        icon: 'success',
+        title: 'Modifié!!',
+        position: 'top-end'
+      })
+      this.form.reset();
+     }
+     ,(error) => {
+       console.log(error)
+       Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Travail non sauvegardé!',
+        text: 'Vérifiez vos données',
+        // showConfirmButton: false,
+        // timer: 1500
+      })
+     });
   }
 }

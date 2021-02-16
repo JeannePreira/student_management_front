@@ -16,4 +16,10 @@ export class ReferentielService {
   addReferentiel(referentiel:any){
     return this.http.post(`${this.url}/admin/referentiel`, referentiel)
   }
+
+  // updateReferentiel(referentiel:any, id:number){
+  //   return this.http
+  //         .put(`${this.url}/admin/referentiel/${id}`, referentiel)
+  // }
+         
 }

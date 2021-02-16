@@ -1,69 +1,123 @@
-<div class="mt-5 row">
-  <div scope="col" [routerLink]="['addCompetence']" colspan="2" class="mt-2">
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-plus-square ml-3" viewBox="0 0 16 16">
-      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-    </svg>
-  </div>
 
-  <form action="">
-    <div class="row">
-      <div class="col-6">
-        <div class="form-group">
-          <select class="form-control inputstl" id="expertise" multiple  ngModel name="libelle"
-                    (ngModelChange)="onOptionsSelected($event)" >
-                <option class="font-italic font-weight-bold" *ngFor="let competence of competences" value="/api/admin/competences/{{competence.id}}">
-                  {{competence.libelle}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-          <p type="button">Maquetter une application</p>
-          <p type="button">Maquetter une application</p>
-          <p type="button">Maquetter une application</p>
-          <p type="button">Maquetter une application</p>
-        </div>
+<div class="mt-2 row">
+  <div class="col-6">
+    <div class="row ">
+      <div  [routerLink]="['addCompetence']" colspan="2" class="mr-1">
+        <a class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-plus-square ml-3" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </a>
       </div>
-
-      <div class="accordion col-6" id="exempleAccordeon">
-        <div class="card">
-          <div class="card-header" id="header1">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Niveau n°1</button>
-          </div>
-          <div id="collapse1" class="collapse show" aria-labelledby="header1" data-parent="#exempleAccordeon">
-            <div class="card-body">
-              <p>Du texte à cacher / afficher grâce au composant collapse.</p>
-              <span class="small">Deuxième ligne de texte.</span>
-            </div>
-          </div>
-        </div>
-          
-        <div class="card">
-          <div class="card-header" id="header2">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">Niveau n°2</button>
-          </div>
-          <div id="collapse2" class="collapse" aria-labelledby="header2" data-parent="#exempleAccordeon">
-            <div class="card-body">
-              <p>Du texte à cacher / afficher grâce au composant collapse.</p>
-              <span class="small">Deuxième ligne de texte.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header" id="header3">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">Niveau n°3</button>
-          </div>
-          <div id="collapse3" class="collapse" aria-labelledby="header3" data-parent="#exempleAccordeon">
-            <div class="card-body">
-              <p>Du texte à cacher / afficher grâce au composant collapse.</p>
-              <span class="small">Deuxième ligne de texte.</span>
-            </div>
-          </div>
-        </div> 
+      <div  [routerLink]="['updateCompetence', idEdit]" colspan="2" class="mr-1">
+        <a class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="color:#297c9a !important">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+          </svg>
+        </a>
       </div>
+      <div colspan="2" class="mt-2"> 
+        <a (click)="supprimerCompetence(idEdit)">
+           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" color="red">
+               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+               <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+             </svg>
+        </a>
+       </div>
     </div>
-    </form>
-  <div class="col-5">
+  
+    
+    <form>
+      <div class="row mt-2">
+        <div class="col-6 ">
+          <div class="form-group">
+            <ng-multiselect-dropdown
+              [placeholder]="'Choisissez un libelle'"
+              [data]="dropdownList"
+              [(ngModel)]="selectedItems"
+              [settings]="dropdownSettings"
+              (onSelect)="onItemSelect($event)"
+              name="libelle"
+            ></ng-multiselect-dropdown>
+          </div>
+          <div class="form-group ml-5">
+            <h4 class="">
+              Description
+            </h4>
+            <div class="row ">
+              {{description}}
+            </div>
+          </div>
+        </div>
+  
+        <div class="accordion col-6" id="exempleAccordeon" >
+          <div class="card">
+            <div class="card-header" id="header1">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                <div class="row"><div class="mr-4" style="color:#297c9a;">Niveau 1</div> <div style="color:black;">{{libellen1}}</div></div>
+              </button>
+            </div>
+            <div id="collapse1" class="collapse show" aria-labelledby="header1" data-parent="#exempleAccordeon">
+              <div class="card-body row">
+                <div class="col-6">
+                  <h6 style="color:#297c9a;">Groupe d'actions</h6>
+                  <div>{{groupeAction1}}</div>
+                </div>
+                <div class="col-6">
+                  <h6 style="color:#297c9a;">Critères d'évaluation</h6>
+                  <div>{{critereEvaluation1}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+          <div class="card">
+            <div class="card-header" id="header2">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                <div class="row"><div class="mr-4" style="color:#297c9a;">Niveau 1</div> <div style="color:black;">{{libellen2}}</div></div>
+              </button>
+            </div>
+            <div id="collapse2" class="collapse" aria-labelledby="header2" data-parent="#exempleAccordeon">
+              <div class="card-body row">
+                <div class="col-6">
+                  <h6 style="color:#297c9a;">Groupe d'actions</h6>
+                  <div>{{groupeAction2}}</div>
+                </div>
+                <div class="col-6">
+                  <h6 style="color:#297c9a;">Critères d'évaluation</h6>
+                  <div>{{critereEvaluation2}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="card">
+            <div class="card-header" id="header3">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                <div class="row"><div class="mr-4" style="color:#297c9a;">Niveau 3</div> <div style="color:black;">{{libellen2}}</div></div>
+              </button>
+            </div>
+            <div id="collapse3" class="collapse" aria-labelledby="header3" data-parent="#exempleAccordeon">
+              <div class="card-body row">
+                <div class="col-6">
+                  <h6 style="color:#297c9a;">Groupe d'actions</h6>
+                  <div>{{groupeAction3}}</div>
+                </div>
+                <div class="col-6">
+                  <h6 style="color:#297c9a;">Critères d'évaluation</h6>
+                  <div>{{critereEvaluation3}}</div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      </form>
+  
+  </div>
+  <div class="col-6">
         <router-outlet></router-outlet>
   </div>
 </div>

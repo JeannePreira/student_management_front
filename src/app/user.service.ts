@@ -3,7 +3,8 @@ import { HttpClient} from '@angular/common/http';
 
 
 import { User } from './models/user/user.module';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,50 +14,51 @@ export class UserService {
 
   url = "/api"
   Users: any;
-  
+  private refreshNeeded = new Subject<void>();
+
   constructor(private http:HttpClient) { }
 
+  getRefresh(){
+    return this.refreshNeeded;
+  }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${this.url}/admin/users`);
+    return this.http.get(`${this.url}/admin/users?deleted=0`);
   }
 
   addUser(user: any){
-    return this.http.post(this.url+'/admin/users', user)
+    return this.http
+          .post(this.url+'/admin/users', user)
+          .pipe(
+            tap(()=>{
+              this.refreshNeeded.next();
+            })
+          )
   }
 
   getUserById(id: number): Observable<any>{
-    return this.http.get(`${this.url}/admin/user/${id}`);
+    return this.http.get(`${this.url}/admin/users/${id}`);
   }
   
   updateUser(updateUser:any ,id: number){
-    return this.http.put(this.url+'/admin/users/'+ id , updateUser);
+    return this.http
+      .put(this.url+'/admin/users/'+ id , updateUser)
+      .pipe(
+        tap(()=>{
+          this.refreshNeeded.next();
+        })
+      )
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // findUserById(id: number){
-  //   const user = this.Users.find(
-  //     (u:User) =>{
-  //       return u.id === id;
-  //     }
-  //   )
-  //   return user;
-  // }
+  deleteUser(id: number){
+    return this.http
+            .delete(this.url+'/admin/users/'+ id)
+            .pipe(
+              tap(()=>{
+                this.refreshNeeded.next();
+              })
+            );
+  }
 
   getUserByEmailAndPass(email: string, password: string){
     const user = this.Users.find(

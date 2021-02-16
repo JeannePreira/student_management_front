@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row" style=" border-radius:4px; box-shadow: 1px 1px 10px black;">
+        <div class="col-5 p-3">
+            <h1  style="color:#197c9a;font-family: Great Vibes;">Admin</h1>
+            <img *ngIf="user.avatar==null" src="./assets/images/avatar.jpg" class="rounded-circle mt-3 Responsive image col-12 p-3" style="height:250px; width:260px">
+            <img *ngIf="user.avatar" src="{{'data:image/jpg;base64,'+user.avatar}}" default="./assets/images/avatar.jpg" class="rounded-circle mt-3 Responsive image col-12 p-3" style="height:250px; width:260px">
+            <h4 class="text-center mt-3 mb-5">{{user.username}}</h4>
+            <div class="row">
+                <h5 class="col-6" style="color:#197c9a;font-family: Great Vibes;">Nom Complet:</h5>
+                <p class="col-6">{{user.prenom}} {{user.nom}}</p>
+            </div>    
+        </div>
+        <div class="col-7 p-4 mt-5">
+            <h2 style="border-bottom: 3px solid #297c9a; color:#197c9a;font-family: Great Vibes;" class="mt-5">Contact</h2>
+            <p>Adresse: {{user.adresse}}</p>
+            <p>Email: {{user.email}}</p>
+            
+        </div>
+    </div>
+</div>
