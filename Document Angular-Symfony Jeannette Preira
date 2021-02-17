@@ -1,0 +1,94 @@
+
+
+
+
+
+
+
+
+========================Symfony===================================
+
+
+apres téléchargement du dossier, l'ouvrir dans un éditeur
+
+=>Creer un fichier .env.local y mettre les données pour la connextion à la base de donnée
+
+DATABASE_URL="mysql://root:@127.0.0.1:3306/nomBase?serverVersion=laversion"
+Ex:DATABASE_URL="mysql://root:@127.0.0.1:3306/redFile?serverVersion=MariaDB-10.4.16"
+
+Instaler les dépendances:
+    Composer install
+
+Mettre en place le Json Web Token (JWT)=>Installer le composant security
+    composer require security
+    
+Installer le bundle
+    composer require lexik/jwt-authentication-bundle
+Générer les clef(public et privée)
+    mkdir -p config/jwt
+    openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+    openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
+
+Nb:entrer le mot de passe
+
+Configurer le fichier env
+    Dans JWT_PASSPHRASE=motdepass
+
+C’est le mot de passe donné a la clef
+
+Et voilà le token sera générer sur postman
+
+
+
+
+
+
+
+
+
+
+
+
+========================Angular==================================
+
+
+Après téléchargement du dossier , l'ouvrir dans un éditeur
+
+ on ouvre le terminal on ajoute les commandes:
+
+
+puis faire
+
+1-npm install
+
+
+Ainsi l'application angular et utilisable.
+
+Pour se connecter peut utiliser ces users:
+
+1-Un utilisateur Admin:
+
+email: charles72@carre.fr
+
+password: courageous
+
+2-Un utilisateur CM:
+
+email: plenoir@dbmail.com
+
+password: courageous
+
+3-Un utilisateur Apprenant:
+
+username: legoff.frederique@fischer.fr
+
+password: courageous
+
+4-Un utilisateur Formateur:
+
+email: npineau@ifrance.com
+
+password: courageous
+
+
+
