@@ -8,11 +8,11 @@
           <label for="inputCompetence" class="col-form-label">Groupe Competence</label>
         </div>
         <div class="col-8">
-          <select class="form-control inputstl" id="inputCompetence" multiple  [formControlName]="'groupeCompetence'" [(ngModel)]="competences.groupeCompetence"
-                  (ngModelChange)="optionChoised($event)" >
-              <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" value="/api/admin/groupeCompetences/{{groupeCompetence.id}}">
-                {{groupeCompetence.libelle}}</option>
-          </select>
+          <select class="form-control inputstl" id="inputCompetence" multiple  [formControlName]="'groupeCompetence'" 
+                    (ngModelChange)="optionChoised($event)" >
+                <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" value="/api/admin/grpecompetences/{{groupeCompetence.id}}">
+                  {{groupeCompetence.libelle}}</option>
+            </select>
         </div>
      
       </div>
@@ -45,14 +45,14 @@
             </div>
             <div id="collapse4" class="collapse show" aria-labelledby="header4" data-parent="#exempleAccordeon">
               <div class="card-body">
-                <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [(ngModel)]="competences.groupeCompetence" formControlName="libellen1">
+                <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux"  formControlName="libellen1">
               </div>
               <span class="text-danger row ml-5" *ngIf="libellen1.invalid && libellen1.touched">libelle is required</span>
               <div class="card-body">
-                <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" [(ngModel)]="competences.groupeCompetence" formControlName="groupeAction1">
+                <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" formControlName="groupeAction1">
               </div>
               <div class="card-body">
-                <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" [(ngModel)]="competences.groupeCompetence" formControlName="critereEvaluation1">
+                <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" formControlName="critereEvaluation1">
               </div>
             </div>
           </div>
@@ -63,14 +63,14 @@
             </div>
             <div id="collapse5" class="collapse" aria-labelledby="header5" data-parent="#exempleAccordeon">
               <div class="card-body">
-                <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [(ngModel)]="competences.groupeCompetence" formControlName="libellen2">
+                <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" formControlName="libellen2">
               </div>
               <span class="text-danger row  ml-5" *ngIf="libellen2.invalid && libellen2.touched">libelle is required</span>
               <div class="card-body">
-                <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" [(ngModel)]="competences.groupeCompetence" formControlName="groupeAction2">
+                <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" formControlName="groupeAction2">
               </div>
               <div class="card-body">
-                <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" [(ngModel)]="competences.groupeCompetence" formControlName="critereEvaluation2">
+                <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" formControlName="critereEvaluation2">
               </div>
             </div>
           </div>
@@ -81,14 +81,14 @@
             </div>
             <div id="collapse6" class="collapse" aria-labelledby="header6" data-parent="#exempleAccordeon">
               <div class="card-body">
-                <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" [(ngModel)]="competences.libellen3" formControlName="libellen3">
+                <input type="text" class="form-control " id="niveaux" aria-describedby="" placeholder="niveaux" formControlName="libellen3">
               </div>
               <span class="text-danger row" *ngIf="libellen3.invalid && libellen3.touched">libelle is required</span>
               <div class="card-body">
-                <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" [(ngModel)]="competences.groupeAction3" formControlName="groupeAction3">
+                <input type="text" class="form-control " id="groupeAction" aria-describedby="" placeholder="groupe d'action à réaliser" formControlName="groupeAction3">
               </div>
               <div class="card-body">
-                <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" [(ngModel)]="competences.critereEvaluation3" formControlName="critereEvaluation3">
+                <input type="text" class="form-control " id="critereEvaluation" aria-describedby="" placeholder="critere d'évaluation" formControlName="critereEvaluation3">
               </div>
             </div>
           </div> 

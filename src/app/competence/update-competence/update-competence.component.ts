@@ -57,6 +57,7 @@ export class UpdateCompetenceComponent implements OnInit {
     const form = this.updateForm.value;
     let competence:any = {};
     competence.libelle = form.libelle;
+    competence.groupeCompetence = form.groupeCompetence;
     competence.description = form.description;
     competence.niveaux = [];
     for(let i=1; i <= 3 ;i++){

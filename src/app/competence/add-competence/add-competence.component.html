@@ -9,15 +9,15 @@
             <label for="inputCompetence" class="col-form-label">groupe Competence</label>
           </div>
           <div class="col-8">
-            <select class="form-control inputstl" id="inputCompetence" multiple = true  [formControlName]="'groupeCompetence'"
+            <select class="form-control inputstl" id="inputCompetence" multiple  [formControlName]="'groupeCompetence'" 
                     (ngModelChange)="optionChoised($event)" >
-                <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" value="/api/admin/groupeCompetences/{{groupeCompetence.id}}">
+                <option class="font-italic font-weight-bold" *ngFor="let groupeCompetence of groupeCompetences" value="/api/admin/grpecompetences/{{groupeCompetence.id}}">
                   {{groupeCompetence.libelle}}</option>
             </select>
           </div>
        
         </div>
-        <span class="text-danger row" *ngIf="groupeCompetence.invalid && groupeCompetence.touched">ggroupeCompetence is required</span>
+        <span class="text-danger row" *ngIf="groupeCompetence.invalid && groupeCompetence.touched">groupeCompetence is required</span>
         <div class="row mt-4 form-group">
           <div class="col-4">
             <label for="inputLibelle" class="col-form-label">Libelle</label>
@@ -95,7 +95,7 @@
             </div> 
       </div>
       <div class="form-group col-lg-8 ">
-        <button type="button" class="btn float-right mt-5 col-lg-4" (click)="ajouterCompetence()" [disabled]="addForm.invalid" style="background-color:#287895; color:white">Soumetre</button>
+        <button type="button" class="btn float-right mt-5 col-lg-4" (click)="ajouterCompetence()"  style="background-color:#287895; color:white">Soumetre</button>
       </div>
       </div>
     </form>

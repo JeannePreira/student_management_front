@@ -12,12 +12,10 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 })
 export class AddCompetenceComponent implements OnInit {
 
+  idEdit=0;
   addForm: FormGroup | any;
   groupeCompetences: any;
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings:IDropdownSettings | any;
-  
+  competences: any;
   constructor(private competenceService: CompetenceService, private groupeCompetenceService: GroupeCompetenceService) { }
 
   ngOnInit(): void {
@@ -26,7 +24,7 @@ export class AddCompetenceComponent implements OnInit {
     });
 
     this.addForm = new FormGroup({
-      'groupeCompetence': new FormControl('', Validators.required),
+      'groupeCompetence': new FormControl([], Validators.required),
       'libelle':new FormControl('', Validators.required),
       'description':new FormControl('', Validators.required),
       'libellen1':new FormControl('', Validators.required),
@@ -40,39 +38,36 @@ export class AddCompetenceComponent implements OnInit {
       'critereEvaluation3': new FormControl('', Validators.required)
     });
 
-    this.dropdownSettings = {
-      singleSelection: true,
-      idField: 'id',
-      textField: 'libelle',
-      itemsShowLimit: 1,
-      allowSearchFilter: true
-    };
+  
   }
 
   optionChoised(id: any) {
   }
 
-  
   ajouterCompetence(){
 
     const form = this.addForm.value;
+    console.log(form);
+    
     let competence:any = {};
     competence.libelle = form.libelle;
+    competence.groupeCompetence = form.groupeCompetence;
     competence.description = form.description;
     competence.niveaux = [];
     for(let i=1; i <= 3 ;i++){
-      competence.niveaux.push({libelle:form['libellen'+i], 
-                                groupeAction:form['groupeAction'+i], 
-                                critereEvaluation:form['critereEvaluation'+i]})
- 
+      competence.niveaux.push({libelle:form['libellen'+i],
+                              groupeAction:form['groupeAction'+i], 
+                              critereEvaluation:form['critereEvaluation'+i]})
     }
-    // console.log(competence);
-    this.competenceService.addCompetence(competence).subscribe(data=>
+    console.log(competence);
+    this.competenceService.addCompetence(competence).subscribe(data =>
       {
         console.log(data)
+
+     
         Swal.fire({
           icon: 'success',
-          title: 'Ajouté!!',
+          title: 'Modifié!!',
           position: 'top-end'
         })
         this.addForm.reset();
@@ -81,7 +76,7 @@ export class AddCompetenceComponent implements OnInit {
          console.log(error)
          Swal.fire({
           icon: 'error',
-          title: 'non Ajouté!',
+          title: 'non Modifié!',
           text: 'infos invalid ou existes déja',
           position: 'top-end'
         })
@@ -112,4 +107,5 @@ export class AddCompetenceComponent implements OnInit {
   get libellen3(){
     return this.addForm.get('libellen3')
   }
+
 }
